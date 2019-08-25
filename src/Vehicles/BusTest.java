@@ -8,7 +8,7 @@ class BusTest {
     @Test
     void testDefaults(){
         Bus bus = new Bus();
-        assertEquals(6, bus.len);
+        assertEquals(6, bus.length);
         assertEquals(1, bus.width);
     }
 

@@ -28,11 +28,11 @@ public class Straight extends Intersection {
     public void setLength(double length) {
         Bus bus = new Bus();
         //TODO Remove this and come up with better length detection
-        if (length > 5 * bus.len) {
-            this.length = 5 * bus.len;
+        if (length > 5 * bus.length) {
+            this.length = 5 * bus.length;
             //TODO this gives option to use len or length. Need to fix bus class...
-        }else if (length < bus.len){
-            this.length = bus.len;
+        }else if (length < bus.length){
+            this.length = bus.length;
         }else {
             this.length = length;
         }
