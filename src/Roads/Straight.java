@@ -1,14 +1,11 @@
 package Roads;
 
-public class TIntersection extends Intersection {
+public class Straight extends Intersection {
 
     String originatesFrom;
     // Indicator of where the road comes from
-    String orientation;
-    // Indicator of if the road is left-sided or right-sided
 
-    public TIntersection(String originatesFrom, String orientation) {
-        setOrientation(orientation);
+    public Straight(String originatesFrom) {
         setOriginatesFrom(originatesFrom);
         setPosition();
     }
@@ -21,24 +18,24 @@ public class TIntersection extends Intersection {
         this.originatesFrom = originatesFrom;
     }
 
-    public String getOrientation() {
-        return orientation;
-    }
-
-    public void setOrientation(String orientation) {
-        this.orientation = orientation;
-    }
-
     public void setPosition() {
         switch (originatesFrom) {
             case "North":
                 this.hasNorthExit = false;
+                this.hasEastExit = false;
+                this.hasWestExit = false;
             case "South":
                 this.hasSouthExit = false;
+                this.hasEastExit = false;
+                this.hasWestExit = false;
             case "East":
                 this.hasEastExit = false;
+                this.hasSouthExit = false;
+                this.hasNorthExit = false;
             case "West":
                 this.hasWestExit = false;
+                this.hasNorthExit = false;
+                this.hasSouthExit = false;
         }
     }
 }
