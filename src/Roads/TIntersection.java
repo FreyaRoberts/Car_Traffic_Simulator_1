@@ -32,13 +32,13 @@ public class TIntersection extends Intersection {
     public void setPosition() {
         switch (originatesFrom) {
             case "North":
-                this.isNorth = false;
+                this.hasNorthExit = false;
             case "South":
-                this.isSouth = false;
+                this.hasSouthExit = false;
             case "East":
-                this.isEast = false;
+                this.hasEastExit = false;
             case "West":
-                this.isWest = false;
+                this.hasWestExit = false;
         }
     }
 }
