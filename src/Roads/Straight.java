@@ -1,11 +1,12 @@
 package Roads;
 import Vehicles.*;
+import java.util.stream.IntStream;
 
 public class Straight extends Intersection {
 
-    double length;
+    int[] length;
 
-    public Straight(String originatesFrom, double length) {
+    public Straight(String originatesFrom, int length) {
         super(originatesFrom);
         super.setExits(originatesFrom);
         setOriginatesFrom(originatesFrom);
@@ -13,21 +14,23 @@ public class Straight extends Intersection {
         setLength(length);
     }
 
-    public double getLength() {
+    public int[] getLength() {
         return length;
     }
 
-    public void setLength(double length) {
+    public void setLength(int length) {
         Bus bus = new Bus();
+        int distance;
         //TODO Remove this and come up with better length detection
         //TODO Do this by sending in a bus from the MAIN class and also make min/max lengths a constant
         if (length > 5 * bus.length) {
-            this.length = 5 * bus.length;
-        }else if (length < bus.length){
-            this.length = bus.length;
+            distance = 5 * (int) bus.length;
+        }else if (length < (int) bus.length){
+            distance = (int) bus.length;
         }else {
-            this.length = length;
+            distance = length;
         }
+        this.length = IntStream.range(1, distance + 1).toArray();
     }
 
     public void setExits(String originatesFrom) {
