@@ -22,7 +22,6 @@ public class Straight extends Intersection {
         //TODO Remove this and come up with better length detection
         if (length > 5 * bus.length) {
             this.length = 5 * bus.length;
-            //TODO this gives option to use len or length. Need to fix bus class...
         }else if (length < bus.length){
             this.length = bus.length;
         }else {
