@@ -4,8 +4,6 @@ import Vehicles.*;
 public class Straight extends Intersection {
 
     double length;
-    String originatesFrom;
-    // Indicator of where the road comes from
 
     public Straight(String originatesFrom, double length) {
         super(originatesFrom);
@@ -13,14 +11,6 @@ public class Straight extends Intersection {
         setOriginatesFrom(originatesFrom);
         setExits(originatesFrom);
         setLength(length);
-    }
-
-    public String getOriginatesFrom() {
-        return originatesFrom;
-    }
-
-    public void setOriginatesFrom(String originatesFrom) {
-        this.originatesFrom = originatesFrom;
     }
 
     public double getLength() {
