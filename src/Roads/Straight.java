@@ -8,8 +8,10 @@ public class Straight extends Intersection {
     // Indicator of where the road comes from
 
     public Straight(String originatesFrom, double length) {
+        super(originatesFrom);
+        super.setExits(originatesFrom);
         setOriginatesFrom(originatesFrom);
-        setPosition();
+        setExits(originatesFrom);
         setLength(length);
     }
 
@@ -38,22 +40,18 @@ public class Straight extends Intersection {
         }
     }
 
-    public void setPosition() {
+    public void setExits(String originatesFrom) {
         switch (originatesFrom) {
             case "North":
-                this.hasNorthExit = false;
-                this.hasEastExit = false;
+                            this.hasEastExit = false;
                 this.hasWestExit = false;
             case "South":
-                this.hasSouthExit = false;
                 this.hasEastExit = false;
                 this.hasWestExit = false;
             case "East":
-                this.hasEastExit = false;
                 this.hasSouthExit = false;
                 this.hasNorthExit = false;
             case "West":
-                this.hasWestExit = false;
                 this.hasNorthExit = false;
                 this.hasSouthExit = false;
         }
