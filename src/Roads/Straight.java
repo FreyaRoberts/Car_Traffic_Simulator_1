@@ -20,6 +20,7 @@ public class Straight extends Intersection {
     public void setLength(double length) {
         Bus bus = new Bus();
         //TODO Remove this and come up with better length detection
+        //TODO Do this by sending in a bus from the MAIN class and also make min/max lengths a constant
         if (length > 5 * bus.length) {
             this.length = 5 * bus.length;
         }else if (length < bus.length){
