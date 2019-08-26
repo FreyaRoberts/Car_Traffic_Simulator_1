@@ -9,7 +9,7 @@ public class Intersection {
 
     public Intersection(String originatesFrom){
         setOriginatesFrom(originatesFrom);
-        setExits();
+        setExits(originatesFrom);
     }
 
     public void setOriginatesFrom(String originatesFrom) {
@@ -20,7 +20,7 @@ public class Intersection {
         return originatesFrom;
     }
 
-    public void setExits() {
+    public void setExits(String originatesFrom) {
         switch (originatesFrom) {
             case "North":
                 this.hasNorthExit = false;
