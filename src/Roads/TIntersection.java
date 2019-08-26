@@ -8,9 +8,10 @@ public class TIntersection extends Intersection {
     // Indicator of if the road is left-sided or right-sided
 
     public TIntersection(String originatesFrom, String orientation) {
+        super(originatesFrom);
+        super.setExits(originatesFrom);
         setOrientation(orientation);
-        setOriginatesFrom(originatesFrom);
-        setPosition();
+        setExits(orientation);
     }
 
     public String getOriginatesFrom() {
@@ -29,16 +30,13 @@ public class TIntersection extends Intersection {
         this.orientation = orientation;
     }
 
-    public void setPosition() {
-        switch (originatesFrom) {
-            case "North":
-                this.hasNorthExit = false;
-            case "South":
-                this.hasSouthExit = false;
-            case "East":
+    public void setExits(String orientation) {
+        switch (orientation) {
+            case "Left":
                 this.hasEastExit = false;
-            case "West":
+            case "Right":
                 this.hasWestExit = false;
+
         }
     }
 }
