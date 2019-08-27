@@ -2,14 +2,10 @@ package Roads;
 
 import Vehicles.*;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.stream.IntStream;
-
 public class Straight extends Intersection {
 
     int length;
-    boolean[] hasSpaces;
+    boolean[] hasVehicles;
 
     public Straight(String originatesFrom, int length) {
         super(originatesFrom);
@@ -17,7 +13,7 @@ public class Straight extends Intersection {
         setOriginatesFrom(originatesFrom);
         setExits(originatesFrom);
         setLength(length);
-        setHasSpaces(this.length);
+        setHasVehicles(this.length);
     }
 
     public int getLength() {
@@ -39,18 +35,18 @@ public class Straight extends Intersection {
         this.length = distance;
     }
 
-    public boolean[] getHasSpaces() {
-        return hasSpaces;
+    public boolean[] getHasVehicles() {
+        return hasVehicles;
     }
 
-    public void setHasSpaces(int length) {
-        this.hasSpaces = new boolean[length];
+    public void setHasVehicles(int length) {
+        this.hasVehicles = new boolean[length];
     }
 
     public void addCar(int frontPos, int backPos){
         int bodyPos;
         for (bodyPos = backPos; bodyPos <= frontPos;){
-            hasSpaces[bodyPos] = true;
+            hasVehicles[bodyPos] = true;
             bodyPos++;
         }
     }

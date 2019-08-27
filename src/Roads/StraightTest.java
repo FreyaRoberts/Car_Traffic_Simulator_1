@@ -22,7 +22,7 @@ class StraightTest {
     @Test
     void testHasSpaces() {
         Straight road = new Straight("North", 10);
-        System.out.println(Arrays.toString(road.hasSpaces));
+        System.out.println(Arrays.toString(road.hasVehicles));
         //Expected: 6 False's in an array
 
     }
@@ -31,22 +31,22 @@ class StraightTest {
     void testAddCar() {
         Straight road = new Straight("North", 10);
         road.addCar(5, 2);
-        assertFalse(road.hasSpaces[0]);
-        assertFalse(road.hasSpaces[1]);
-        assertTrue(road.hasSpaces[2]);
-        assertTrue(road.hasSpaces[3]);
-        assertTrue(road.hasSpaces[4]);
-        assertTrue(road.hasSpaces[5]);
+        assertFalse(road.hasVehicles[0]);
+        assertFalse(road.hasVehicles[1]);
+        assertTrue(road.hasVehicles[2]);
+        assertTrue(road.hasVehicles[3]);
+        assertTrue(road.hasVehicles[4]);
+        assertTrue(road.hasVehicles[5]);
 
         road = new Straight("North", 10);
         Car car = new Car();
         road.addCar(car.getFrontPos(), car.getBackPos());
-        assertTrue(road.hasSpaces[0]);
-        assertFalse(road.hasSpaces[1]);
-        assertFalse(road.hasSpaces[2]);
-        assertFalse(road.hasSpaces[3]);
-        assertFalse(road.hasSpaces[4]);
-        assertFalse(road.hasSpaces[5]);
+        assertTrue(road.hasVehicles[0]);
+        assertFalse(road.hasVehicles[1]);
+        assertFalse(road.hasVehicles[2]);
+        assertFalse(road.hasVehicles[3]);
+        assertFalse(road.hasVehicles[4]);
+        assertFalse(road.hasVehicles[5]);
     }
 
 }
