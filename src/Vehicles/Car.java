@@ -34,6 +34,7 @@ public class Car {
         }
 
         public void setBackPos(int pos) {
-            this.backPos = pos;
+            this.backPos = Math.max(pos, 0);
+            // If pos is less than zero it sets it to zero
         }
 }
