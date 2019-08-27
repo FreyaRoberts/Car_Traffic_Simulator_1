@@ -43,6 +43,10 @@ public class Straight extends Intersection {
         this.hasVehicles = new boolean[length];
     }
 
+    public boolean hasVehicle(int pos){
+        return hasVehicles[pos];
+    }
+
     public void addCar(int frontPos, int backPos){
         int bodyPos;
         for (bodyPos = backPos; bodyPos <= frontPos;){
