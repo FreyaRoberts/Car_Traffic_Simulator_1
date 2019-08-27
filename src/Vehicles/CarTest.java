@@ -19,6 +19,6 @@ class CarTest {
         assertEquals(0, car.backPos);
         car.drive();
         assertEquals(0, car.frontPos);
-        assertEquals(-2, car.backPos);
+        assertEquals(0, car.backPos);
     }
 }
