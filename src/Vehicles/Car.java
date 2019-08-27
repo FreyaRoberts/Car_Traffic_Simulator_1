@@ -17,8 +17,7 @@ public class Car {
 
     public void drive() {
         setFrontPos(frontPos + 1);
-        setBackPos((frontPos) - (int) this.length);
-        // No +1 for back position as frontPos has already been increased by 1
+        setBackPos();
     }
 
     public int getFrontPos() {
@@ -33,8 +32,15 @@ public class Car {
         return backPos;
     }
 
-    public void setBackPos(int pos) {
-        this.backPos = Math.max(pos, 0);
-        // If pos is less than zero it sets it to zero
+    public void setBackPos() {
+        int newBackPos = frontPos - (int) length + 1;
+        /*
+         Extra + 1 as when the car is stored, the front position is included when usually in math,
+         where you start from is not part of the answer which means subtracting the length makes
+         the car longer by one position. Hence adding + 1 corrects this and stores the car on a road
+         so that it takes up as many positions as it is long.
+        */
+        backPos = Math.max(newBackPos, 0);
+        // If pos is less than zero it is set to zero
     }
 }
