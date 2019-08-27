@@ -1,5 +1,6 @@
 package Roads;
 
+import Vehicles.Car;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -19,7 +20,7 @@ class StraightTest {
     }
 
     @Test
-    void testHasSpaces(){
+    void testHasSpaces() {
         Straight road = new Straight("North", 10);
         System.out.println(Arrays.toString(road.hasSpaces));
         //Expected: 6 False's in an array
