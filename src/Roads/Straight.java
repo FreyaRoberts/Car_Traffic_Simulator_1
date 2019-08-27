@@ -51,6 +51,10 @@ public class Straight extends Intersection {
         }
     }
 
+    public void removeCar(int pos){
+        hasVehicles[pos] = false;
+    }
+
     public void setExits(String originatesFrom) {
         switch (originatesFrom) {
             case "North":

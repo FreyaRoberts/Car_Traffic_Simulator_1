@@ -49,4 +49,15 @@ class StraightTest {
         assertFalse(road.hasVehicles[5]);
     }
 
+    @Test
+    void testRemoveCar(){
+        Straight road = new Straight("North", 10);
+        road.addCar(5, 2);
+        road.removeCar(5);
+        assertFalse(road.hasVehicles[0]);
+        assertFalse(road.hasVehicles[1]);
+        assertTrue(road.hasVehicles[2]);
+        assertTrue(road.hasVehicles[3]);
+        assertTrue(road.hasVehicles[4]);
+        assertFalse(road.hasVehicles[5]);    }
 }
