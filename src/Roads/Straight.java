@@ -1,10 +1,14 @@
 package Roads;
+
 import Vehicles.*;
+
+import java.lang.reflect.Array;
 import java.util.stream.IntStream;
 
 public class Straight extends Intersection {
 
-    int[] length;
+    int length;
+    boolean[] hasSpaces;
 
     public Straight(String originatesFrom, int length) {
         super(originatesFrom);
@@ -12,9 +16,10 @@ public class Straight extends Intersection {
         setOriginatesFrom(originatesFrom);
         setExits(originatesFrom);
         setLength(length);
+        setHasSpaces(this.length);
     }
 
-    public int[] getLength() {
+    public int getLength() {
         return length;
     }
 
@@ -25,18 +30,26 @@ public class Straight extends Intersection {
         //TODO Do this by sending in a bus from the MAIN class and also make min/max lengths a constant
         if (length > 5 * bus.length) {
             distance = 5 * (int) bus.length;
-        }else if (length < (int) bus.length){
+        } else if (length < 2 * (int) bus.length) {
             distance = (int) bus.length;
-        }else {
+        } else {
             distance = length;
         }
-        this.length = IntStream.range(1, distance + 1).toArray();
+        this.length = distance;
+    }
+
+    public boolean[] getHasSpaces() {
+        return hasSpaces;
+    }
+
+    public void setHasSpaces(int length) {
+        this.hasSpaces = new boolean[length];
     }
 
     public void setExits(String originatesFrom) {
         switch (originatesFrom) {
             case "North":
-                            this.hasEastExit = false;
+                this.hasEastExit = false;
                 this.hasWestExit = false;
             case "South":
                 this.hasEastExit = false;
