@@ -47,6 +47,14 @@ public class Straight extends Intersection {
         this.hasSpaces = new boolean[length];
     }
 
+    public void addCar(int frontPos, int backPos){
+        int bodyPos;
+        for (bodyPos = backPos; bodyPos <= frontPos;){
+            hasSpaces[bodyPos] = true;
+            bodyPos++;
+        }
+    }
+
     public void setExits(String originatesFrom) {
         switch (originatesFrom) {
             case "North":

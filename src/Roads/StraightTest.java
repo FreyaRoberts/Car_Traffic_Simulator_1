@@ -27,4 +27,26 @@ class StraightTest {
 
     }
 
+    @Test
+    void testAddCar() {
+        Straight road = new Straight("North", 10);
+        road.addCar(5, 2);
+        assertFalse(road.hasSpaces[0]);
+        assertFalse(road.hasSpaces[1]);
+        assertTrue(road.hasSpaces[2]);
+        assertTrue(road.hasSpaces[3]);
+        assertTrue(road.hasSpaces[4]);
+        assertTrue(road.hasSpaces[5]);
+
+        road = new Straight("North", 10);
+        Car car = new Car();
+        road.addCar(car.getFrontPos(), car.getBackPos());
+        assertTrue(road.hasSpaces[0]);
+        assertFalse(road.hasSpaces[1]);
+        assertFalse(road.hasSpaces[2]);
+        assertFalse(road.hasSpaces[3]);
+        assertFalse(road.hasSpaces[4]);
+        assertFalse(road.hasSpaces[5]);
+    }
+
 }
