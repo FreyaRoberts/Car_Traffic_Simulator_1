@@ -4,7 +4,7 @@ public class Car {
     private final double CAR_LENGTH = 2;
     public double length = CAR_LENGTH;
     double width = 0.5 * length;
-    int frontPos;
+    int frontPos = -1;
     int backPos;
 
     public double getLength() {
