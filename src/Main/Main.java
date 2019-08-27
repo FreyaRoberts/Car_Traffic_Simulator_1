@@ -9,15 +9,10 @@ public class Main {
     public static void main(String[] args) {
         Car car = new Car();
         Straight road = new Straight("South", 25);
-        System.out.println(Arrays.toString(road.getHasVehicles()));
-        performCarMovement(car, road);
-        System.out.println(Arrays.toString(road.getHasVehicles()));
-        performCarMovement(car, road);
-        System.out.println(Arrays.toString(road.getHasVehicles()));
-        performCarMovement(car, road);
-        System.out.println(Arrays.toString(road.getHasVehicles()));
-        performCarMovement(car, road);
-        System.out.println(Arrays.toString(road.getHasVehicles()));
+        while (canMoveForward(car,road)) {
+            performCarMovement(car, road);
+            System.out.println(Arrays.toString(road.getHasVehicles()));
+        }
     }
 
     public static void performCarMovement(Car car, Straight road) {
@@ -30,4 +25,12 @@ public class Main {
         road.addCar(car.getFrontPos(), car.getBackPos());
     }
 
+    public static boolean canMoveForward(Car car, Straight road){
+        int futurePos = car.getFrontPos() + 1;
+        if (futurePos >= road.getLength()){
+            return false;
+        } else {
+            return !road.hasVehicle(futurePos);
+        }
+    }
 }
