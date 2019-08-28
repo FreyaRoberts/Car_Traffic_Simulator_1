@@ -49,6 +49,10 @@ public class Straight extends Intersection {
         return hasTrafficLights;
     }
 
+    public boolean hasTrafficLight(int pos){
+        return hasTrafficLights[pos];
+    }
+
     private void setHasTrafficLights(int length) {
         this.hasTrafficLights = new boolean[length];
     }
