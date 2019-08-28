@@ -40,6 +40,7 @@ class StraightTest {
 
         road = new Straight("North", 10);
         Car car = new Car();
+        car.drive();
         road.addCar(car.getFrontPos(), car.getBackPos());
         assertTrue(road.hasVehicles[0]);
         assertFalse(road.hasVehicles[1]);
