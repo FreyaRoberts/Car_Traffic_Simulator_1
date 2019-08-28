@@ -7,12 +7,12 @@ public class Intersection {
     boolean hasWestExit = true;
     String originatesFrom;
 
-    public Intersection(String originatesFrom){
+    Intersection(String originatesFrom){
         setOriginatesFrom(originatesFrom);
         setExits(originatesFrom);
     }
 
-    public void setOriginatesFrom(String originatesFrom) {
+    void setOriginatesFrom(String originatesFrom) {
         this.originatesFrom = originatesFrom;
     }
 

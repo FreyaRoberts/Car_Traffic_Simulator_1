@@ -20,7 +20,7 @@ public class Straight extends Intersection {
         return length;
     }
 
-    public void setLength(int length) {
+    private void setLength(int length) {
         Bus bus = new Bus();
         int distance;
         //TODO Remove this and come up with better length detection
@@ -39,7 +39,7 @@ public class Straight extends Intersection {
         return hasVehicles;
     }
 
-    public void setHasVehicles(int length) {
+    private void setHasVehicles(int length) {
         this.hasVehicles = new boolean[length];
     }
 

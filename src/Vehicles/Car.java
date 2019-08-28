@@ -24,7 +24,7 @@ public class Car {
         return frontPos;
     }
 
-    public void setFrontPos(int pos) {
+    private void setFrontPos(int pos) {
         this.frontPos = pos;
     }
 
@@ -32,7 +32,7 @@ public class Car {
         return backPos;
     }
 
-    public void setBackPos() {
+    private void setBackPos() {
         int newBackPos = frontPos - (int) length + 1;
         /*
          Extra + 1 as when the car is stored, the front position is included when usually in math,

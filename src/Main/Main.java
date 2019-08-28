@@ -2,7 +2,6 @@ package Main;
 
 import Roads.Straight;
 import Vehicles.Car;
-
 import java.util.Arrays;
 
 public class Main {
@@ -24,22 +23,25 @@ public class Main {
         }
     }
 
-    public static void performCarMovement(Car car, Straight road) {
+    private static void performCarMovement(Car car, Straight road) {
         road.removeCar(car.getBackPos());
         moveCarForward(car, road);
     }
 
-    public static void moveCarForward(Car car, Straight road) {
+    private static void moveCarForward(Car car, Straight road) {
         car.drive();
         road.addCar(car.getFrontPos(), car.getBackPos());
     }
 
-    public static boolean canMoveForward(Car car, Straight road) {
+    private static boolean canMoveForward(Car car, Straight road) {
         int futurePos = car.getFrontPos() + 1;
-        if (futurePos >= road.getLength()) {
+        if (futurePos >= road.getLength() || futurePos +1 >= road.getLength()) {
             return false;
+        } else if (!road.hasVehicle((futurePos))) {
+            return !road.hasVehicle(futurePos +1);
         } else {
-            return !road.hasVehicle(futurePos);
+            return false;
         }
+
     }
 }

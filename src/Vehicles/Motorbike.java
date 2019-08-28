@@ -1,7 +1,7 @@
 package Vehicles;
 
-public class Motorbike extends Car {
-    public Motorbike() {
+class Motorbike extends Car {
+    Motorbike() {
         this.length = 0.5 * super.length;
     }
 
