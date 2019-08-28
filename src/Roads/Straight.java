@@ -50,13 +50,17 @@ public class Straight extends Intersection {
     public void addCar(int frontPos, int backPos){
         int bodyPos;
         for (bodyPos = backPos; bodyPos <= frontPos;){
-            hasVehicles[bodyPos] = true;
+            if (bodyPos >= 0) {
+                hasVehicles[bodyPos] = true;
+            }
             bodyPos++;
         }
     }
 
     public void removeCar(int pos){
-        hasVehicles[pos] = false;
+        if (pos >= 0) {
+            hasVehicles[pos] = false;
+        }
     }
 
     public void setExits(String originatesFrom) {

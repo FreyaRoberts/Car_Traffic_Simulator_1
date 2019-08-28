@@ -4,8 +4,8 @@ public class Car {
     private final double CAR_LENGTH = 2;
     public double length = CAR_LENGTH;
     double width = 0.5 * length;
-    int frontPos;
-    int backPos;
+    int frontPos = -1;
+    int backPos = -1;
 
     public double getLength() {
         return length;
@@ -40,7 +40,7 @@ public class Car {
          the car longer by one position. Hence adding + 1 corrects this and stores the car on a road
          so that it takes up as many positions as it is long.
         */
-        backPos = Math.max(newBackPos, 0);
+        backPos = Math.max(newBackPos, -1);
         // If pos is less than zero it is set to zero
     }
 }
