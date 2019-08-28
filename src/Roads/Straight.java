@@ -4,8 +4,9 @@ import Vehicles.*;
 
 public class Straight extends Intersection {
 
-    int length;
-    boolean[] hasVehicles;
+    private int length;
+    private boolean[] hasVehicles;
+    private boolean[] hasTrafficLights;
 
     public Straight(String originatesFrom, int length) {
         super(originatesFrom);
@@ -14,6 +15,7 @@ public class Straight extends Intersection {
         setExits(originatesFrom);
         setLength(length);
         setHasVehicles(this.length);
+        setHasTrafficLights(this.length);
     }
 
     public int getLength() {
@@ -43,13 +45,25 @@ public class Straight extends Intersection {
         this.hasVehicles = new boolean[length];
     }
 
-    public boolean hasVehicle(int pos){
+    public boolean[] getHasTrafficLights() {
+        return hasTrafficLights;
+    }
+
+    private void setHasTrafficLights(int length) {
+        this.hasTrafficLights = new boolean[length];
+    }
+
+    public void addTrafficLight(int pos){
+        hasTrafficLights[pos] = true;
+    }
+
+    public boolean hasVehicle(int pos) {
         return hasVehicles[pos];
     }
 
-    public void addCar(int frontPos, int backPos){
+    public void addCar(int frontPos, int backPos) {
         int bodyPos;
-        for (bodyPos = backPos; bodyPos <= frontPos;){
+        for (bodyPos = backPos; bodyPos <= frontPos; ) {
             if (bodyPos >= 0) {
                 hasVehicles[bodyPos] = true;
             }
@@ -57,7 +71,7 @@ public class Straight extends Intersection {
         }
     }
 
-    public void removeCar(int pos){
+    public void removeCar(int pos) {
         if (pos >= 0) {
             hasVehicles[pos] = false;
         }
