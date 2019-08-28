@@ -7,10 +7,19 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        Car car = new Car();
+        boolean runMain = true;
+        Car car1 = new Car();
+        Car car2 = new Car();
         Straight road = new Straight("South", 25);
-        while (canMoveForward(car,road)) {
-            performCarMovement(car, road);
+        while (runMain) {
+            if (canMoveForward(car1, road)) {
+                performCarMovement(car1, road);
+            } else {
+                runMain = false;
+            }
+            if (canMoveForward(car2, road)) {
+                performCarMovement(car2, road);
+            }
             System.out.println(Arrays.toString(road.getHasVehicles()));
         }
     }
@@ -25,9 +34,9 @@ public class Main {
         road.addCar(car.getFrontPos(), car.getBackPos());
     }
 
-    public static boolean canMoveForward(Car car, Straight road){
+    public static boolean canMoveForward(Car car, Straight road) {
         int futurePos = car.getFrontPos() + 1;
-        if (futurePos >= road.getLength()){
+        if (futurePos >= road.getLength()) {
             return false;
         } else {
             return !road.hasVehicle(futurePos);
