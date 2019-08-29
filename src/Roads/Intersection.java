@@ -3,43 +3,43 @@ package Roads;
 public class Intersection {
     boolean hasEastExit = true;
     boolean hasWestExit = true;
-    private Intersection connectsFromIntersection = null;
-    private Straight connectsFromStraight = null;
-    private TIntersection connectsFromTIntersection = null;
+    private Intersection connectsToIntersection = null;
+    private Straight connectsToStraight = null;
+    private TIntersection connectsToTIntersection = null;
 
-    public Intersection(Intersection originatesFrom) {
-        setOriginatesFrom(originatesFrom);
+    public Intersection(Intersection connectsTo) {
+        setConnectsTo(connectsTo);
     }
 
-    public Intersection(Straight originatesFrom) {
-        setOriginatesFrom(originatesFrom);
+    public Intersection(Straight connectsTo) {
+        setConnectsTo(connectsTo);
     }
 
-    public Intersection(TIntersection originatesFrom) {
-        setOriginatesFrom(originatesFrom);
+    public Intersection(TIntersection connectsTo) {
+        setConnectsTo(connectsTo);
     }
 
-    void setOriginatesFrom(Intersection road) {
-        this.connectsFromIntersection = road;
+    void setConnectsTo(Intersection road) {
+        this.connectsToIntersection = road;
     }
 
-    void setOriginatesFrom(Straight road) {
-        this.connectsFromIntersection = road;
+    void setConnectsTo(Straight road) {
+        this.connectsToIntersection = road;
     }
 
-    void setOriginatesFrom(TIntersection road) {
-        this.connectsFromIntersection = road;
+    void setConnectsTo(TIntersection road) {
+        this.connectsToIntersection = road;
     }
 
     public Intersection getOriginatesFromIntersection() {
-        return connectsFromIntersection;
+        return connectsToIntersection;
     }
 
     public Straight getOriginatesFromStraight() {
-        return connectsFromStraight;
+        return connectsToStraight;
     }
 
     public TIntersection getOriginatesFromTIntersection() {
-        return connectsFromTIntersection;
+        return connectsToTIntersection;
     }
 }

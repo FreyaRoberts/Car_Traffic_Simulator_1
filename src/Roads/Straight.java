@@ -10,21 +10,10 @@ public class Straight extends Intersection {
     private boolean[] hasTrafficLights;
     private TrafficLight[] trafficLights;
 
-    public Straight(Intersection originatesFrom, int length) {
-        super(originatesFrom);
+    public Straight(Intersection connectsTo, int length) {
+        super(connectsTo);
         setExits();
-        setOriginatesFrom(originatesFrom);
-        setExits();
-        setLength(length);
-        setHasVehicles(this.length);
-        setHasTrafficLights(this.length);
-        setTrafficLights(this.length);
-    }
-
-    public Straight(Straight originatesFrom, int length) {
-        super(originatesFrom);
-        setExits();
-        setOriginatesFrom(originatesFrom);
+        setConnectsTo(connectsTo);
         setExits();
         setLength(length);
         setHasVehicles(this.length);
@@ -32,10 +21,21 @@ public class Straight extends Intersection {
         setTrafficLights(this.length);
     }
 
-    public Straight(TIntersection originatesFrom, int length) {
-        super(originatesFrom);
+    public Straight(Straight connectsTo, int length) {
+        super(connectsTo);
         setExits();
-        setOriginatesFrom(originatesFrom);
+        setConnectsTo(connectsTo);
+        setExits();
+        setLength(length);
+        setHasVehicles(this.length);
+        setHasTrafficLights(this.length);
+        setTrafficLights(this.length);
+    }
+
+    public Straight(TIntersection connectsTo, int length) {
+        super(connectsTo);
+        setExits();
+        setConnectsTo(connectsTo);
         setExits();
         setLength(length);
         setHasVehicles(this.length);
