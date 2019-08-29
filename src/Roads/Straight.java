@@ -73,7 +73,7 @@ public class Straight extends Intersection {
     public void addCar(int frontPos, int backPos) {
         int bodyPos;
         for (bodyPos = backPos; bodyPos <= frontPos; ) {
-            if (bodyPos >= 0) {
+            if (bodyPos >= 0 && bodyPos < length) {
                 hasVehicles[bodyPos] = true;
             }
             bodyPos++;
@@ -81,7 +81,7 @@ public class Straight extends Intersection {
     }
 
     public void removeCar(int pos) {
-        if (pos >= 0) {
+        if (pos >= 0 && pos < length) {
             hasVehicles[pos] = false;
         }
     }

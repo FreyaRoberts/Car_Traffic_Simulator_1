@@ -21,12 +21,24 @@ public class Main {
             }
             if (canMoveForward(car1, road)) {
                 performCarMovement(car1, road);
+            } else {
+                performRoadExit(car1, road);
             }
             System.out.println(Arrays.toString(road.getHasVehicles()));
 
             if (count == 50) {
                 count = -1;
             }
+        }
+    }
+
+    private static void performRoadExit(Car car1, Straight road) {
+
+        if (car1.getBackPos() <= road.getLength()) {
+            road.removeCar(car1.getFrontPos());
+            road.removeCar(car1.getBackPos());
+            car1.drive();
+            road.addCar(car1.getBackPos(), car1.getBackPos());
         }
     }
 
