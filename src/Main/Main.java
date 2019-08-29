@@ -49,8 +49,8 @@ public class Main {
         if (handleTrafficLight(futurePos, road)) {
             if (futurePos >= road.getLength() || futurePos + 1 >= road.getLength()) {
                 return false;
-            } else if (!road.getHasTrafficLights()[futurePos]) {
-                return !road.getHasTrafficLights()[futurePos + 1];
+            } else if (!road.getHasVehicles()[futurePos]) {
+                return !road.getHasVehicles()[futurePos + 1];
             } else {
                 return false;
             }
