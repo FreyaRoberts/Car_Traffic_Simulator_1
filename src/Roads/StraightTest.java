@@ -88,11 +88,11 @@ class StraightTest {
     void testHasVehicle() {
         Straight road = new Straight("North", 10);
         road.addCar(5, 2);
-        assertFalse(road.hasVehicle(0));
-        assertFalse(road.hasVehicle(1));
-        assertTrue(road.hasVehicle(2));
-        assertTrue(road.hasVehicle(3));
-        assertTrue(road.hasVehicle(4));
-        assertTrue(road.hasVehicle(5));
+        assertFalse(road.getHasVehicles()[0]);
+        assertFalse(road.getHasVehicles()[1]);
+        assertTrue(road.getHasVehicles()[2]);
+        assertTrue(road.getHasVehicles()[3]);
+        assertTrue(road.getHasVehicles()[4]);
+        assertTrue(road.getHasVehicles()[5]);
     }
 }
