@@ -3,31 +3,31 @@ package Roads;
 public class Intersection {
     boolean hasEastExit = true;
     boolean hasWestExit = true;
-    Intersection connectsFromIntersection = null;
-    Straight connectsFromStraight = null;
-    TIntersection connectsFromTIntersection = null;
+    private Intersection connectsFromIntersection = null;
+    private Straight connectsFromStraight = null;
+    private TIntersection connectsFromTIntersection = null;
 
-    Intersection(Intersection originatesFrom) {
+    public Intersection(Intersection originatesFrom) {
         setOriginatesFrom(originatesFrom);
     }
 
-    Intersection(Straight originatesFrom) {
+    public Intersection(Straight originatesFrom) {
         setOriginatesFrom(originatesFrom);
     }
 
-    Intersection(TIntersection originatesFrom) {
+    public Intersection(TIntersection originatesFrom) {
         setOriginatesFrom(originatesFrom);
     }
 
-    void setOriginatesFrom(Intersection road ) {
+    void setOriginatesFrom(Intersection road) {
         this.connectsFromIntersection = road;
     }
 
-    void setOriginatesFrom(Straight road ) {
+    void setOriginatesFrom(Straight road) {
         this.connectsFromIntersection = road;
     }
 
-    void setOriginatesFrom(TIntersection road ) {
+    void setOriginatesFrom(TIntersection road) {
         this.connectsFromIntersection = road;
     }
 
@@ -35,11 +35,11 @@ public class Intersection {
         return connectsFromIntersection;
     }
 
-    public Straight getOriginatesFromStraight(){
+    public Straight getOriginatesFromStraight() {
         return connectsFromStraight;
     }
 
-    public TIntersection getOriginatesFromTIntersection(){
+    public TIntersection getOriginatesFromTIntersection() {
         return connectsFromTIntersection;
     }
 }

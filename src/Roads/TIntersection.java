@@ -2,7 +2,7 @@ package Roads;
 
 public class TIntersection extends Intersection {
 
-    String orientation;
+    private String orientation;
     // Indicator of if the road is left-sided or right-sided
 
     TIntersection(Intersection originatesFrom, String orientation) {
@@ -31,12 +31,14 @@ public class TIntersection extends Intersection {
         this.orientation = orientation;
     }
 
-    public void setExits(String orientation) {
+    private void setExits(String orientation) {
         switch (orientation) {
             case "Left":
                 this.hasEastExit = false;
+                break;
             case "Right":
                 this.hasWestExit = false;
+                break;
 
         }
     }

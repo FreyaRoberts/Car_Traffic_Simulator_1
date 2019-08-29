@@ -2,21 +2,19 @@ package Roads;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Timer;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TIntersectionTest {
     @Test
-    void testConstruction(){
-        String[] directions = {"South", "North", "East", "West"};
-        String[] orientations = {"Right", "Left"};
-        for (String dir : directions) {
-            for (String ori : orientations) {
-                // Tests creation of every combination of T-intersection configurations
-                TIntersection tIntersection = new TIntersection(dir, ori);
-                assertEquals(dir, tIntersection.originatesFrom);
-                assertEquals(ori, tIntersection.orientation);
-            }
-        }
+    void testConstruction() {
+        Intersection nullRoad = new Intersection((Intersection) null);
+        TIntersection road = new TIntersection(nullRoad, "Left");
+        assertFalse(road.hasEastExit);
+        assertTrue(road.hasWestExit);
+        assertNull(nullRoad.getOriginatesFromIntersection());
+        assertEquals(nullRoad, road.getOriginatesFromIntersection());
     }
 
 }
