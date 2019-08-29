@@ -81,7 +81,7 @@ public class Straight extends Intersection {
         return trafficLights;
     }
 
-    public void setTrafficLights(int length) {
+    private void setTrafficLights(int length) {
         this.trafficLights = new TrafficLight[length];
     }
 
