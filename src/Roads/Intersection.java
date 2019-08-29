@@ -24,11 +24,11 @@ public class Intersection {
     }
 
     void setConnectsTo(Straight road) {
-        this.connectsToIntersection = road;
+        this.connectsToStraight = road;
     }
 
     void setConnectsTo(TIntersection road) {
-        this.connectsToIntersection = road;
+        this.connectsToTIntersection = road;
     }
 
     public Intersection getConnectsToIntersection() {
