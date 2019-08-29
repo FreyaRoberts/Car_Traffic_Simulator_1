@@ -16,7 +16,7 @@ public class Main {
         TrafficLight light = road.getTrafficLights()[6];
         int count;
         for (count = 1; count > 0; count++) {
-            if (count % light.LIGHT_TIME == 0){
+            if (count % light.LIGHT_TIME == 0) {
                 light.setIsGreen(!light.getIsGreen());
             }
             if (canMoveForward(car1, road)) {
@@ -24,7 +24,7 @@ public class Main {
             }
             System.out.println(Arrays.toString(road.getHasVehicles()));
 
-            if (count == 50){
+            if (count == 50) {
                 count = -1;
             }
         }
@@ -43,11 +43,9 @@ public class Main {
 
     private static boolean canMoveForward(Car car, Straight road) {
         int futurePos = car.getFrontPos() + 1;
-        if (handleTrafficLight(futurePos, road)) {
-            if (futurePos >= road.getLength() || futurePos + 1 >= road.getLength()) {
-                return false;
-            } else if (!road.getHasVehicles()[futurePos]) {
-                return !road.getHasVehicles()[futurePos + 1];
+        if (futurePos < road.getLength()) {
+            if (handleTrafficLight(futurePos, road)) {
+                return !road.getHasVehicles()[futurePos];
             } else {
                 return false;
             }
@@ -55,6 +53,7 @@ public class Main {
             return false;
         }
     }
+
 
     private static boolean handleTrafficLight(int pos, Straight road) {
         if (road.getHasTrafficLights()[pos]) {
