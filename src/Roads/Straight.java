@@ -1,5 +1,6 @@
 package Roads;
 
+import Functionality.TrafficLight;
 import Vehicles.*;
 
 public class Straight extends Intersection {
@@ -7,6 +8,7 @@ public class Straight extends Intersection {
     private int length;
     private boolean[] hasVehicles;
     private boolean[] hasTrafficLights;
+    private TrafficLight[] trafficLights;
 
     public Straight(String originatesFrom, int length) {
         super(originatesFrom);
@@ -16,6 +18,7 @@ public class Straight extends Intersection {
         setLength(length);
         setHasVehicles(this.length);
         setHasTrafficLights(this.length);
+        setTrafficLights(this.length);
     }
 
     public int getLength() {
@@ -45,22 +48,6 @@ public class Straight extends Intersection {
         this.hasVehicles = new boolean[length];
     }
 
-    public boolean[] getHasTrafficLights() {
-        return hasTrafficLights;
-    }
-
-    public boolean hasTrafficLight(int pos){
-        return hasTrafficLights[pos];
-    }
-
-    private void setHasTrafficLights(int length) {
-        this.hasTrafficLights = new boolean[length];
-    }
-
-    public void addTrafficLight(int pos){
-        hasTrafficLights[pos] = true;
-    }
-
     public boolean hasVehicle(int pos) {
         return hasVehicles[pos];
     }
@@ -79,6 +66,34 @@ public class Straight extends Intersection {
         if (pos >= 0) {
             hasVehicles[pos] = false;
         }
+    }
+
+    public boolean[] getHasTrafficLights() {
+        return hasTrafficLights;
+    }
+
+
+    private void setHasTrafficLights(int length) {
+        this.hasTrafficLights = new boolean[length];
+    }
+
+    public TrafficLight[] getTrafficLights() {
+        return trafficLights;
+    }
+
+    public void setTrafficLights(int length) {
+        this.trafficLights = new TrafficLight[length];
+    }
+
+    public void addTrafficLight(int pos) {
+        hasTrafficLights[pos] = true;
+        TrafficLight trafficLight = new TrafficLight(pos);
+        trafficLights[pos] = trafficLight;
+    }
+
+    public void removeTrafficLight(int pos) {
+        hasTrafficLights[pos] = false;
+        trafficLights[pos] = null;
     }
 
     public void setExits(String originatesFrom) {

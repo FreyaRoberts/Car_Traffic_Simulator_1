@@ -3,7 +3,7 @@ package Functionality;
 public class TrafficLight {
     private int pos;
     private boolean isGreen;
-    public final int LIGHT_TIME = 5;
+    public final int LIGHT_TIME = 20;
 
     public TrafficLight(int pos) {
         setPos(pos);
