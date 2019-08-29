@@ -4,14 +4,14 @@ public class Car {
     private final double CAR_LENGTH = 2;
     public double length = CAR_LENGTH;
     double width = 0.5 * length;
-    int frontPos = -1;
-    int backPos = -2;
+    private int frontPos = -1;
+    private int backPos = -2;
 
     public double getLength() {
         return length;
     }
 
-    public void setLength(double length) {
+    private void setLength(double length) {
         this.length = length;
     }
 
@@ -42,5 +42,10 @@ public class Car {
         */
         backPos = Math.max(newBackPos, -1);
         // If pos is less than zero it is set to zero
+    }
+
+    public void resetCar(){
+        frontPos = -1;
+        backPos = -2;
     }
 }

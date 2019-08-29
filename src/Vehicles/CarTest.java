@@ -15,13 +15,13 @@ class CarTest {
     @Test
     void testDrive() {
         Car car = new Car();
-        assertEquals(-1, car.frontPos);
-        assertEquals(-2, car.backPos);
+        assertEquals(-1, car.getFrontPos());
+        assertEquals(-2, car.getBackPos());
         car.drive();
-        assertEquals(0, car.frontPos);
-        assertEquals(-1, car.backPos);
+        assertEquals(0, car.getFrontPos());
+        assertEquals(-1, car.getBackPos());
         car.drive();
-        assertEquals(1, car.frontPos);
-        assertEquals(0, car.backPos);
+        assertEquals(1, car.getFrontPos());
+        assertEquals(0, car.getBackPos());
     }
 }

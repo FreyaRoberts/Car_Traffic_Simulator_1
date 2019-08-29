@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         boolean runMain = true;
         Car car1 = new Car();
-        Straight road = new Straight((Intersection) null, 25);
+        Straight road = new Straight((Intersection) null, 12);
         road.addTrafficLight(6);
         TrafficLight light = road.getTrafficLights()[6];
         int count;
@@ -25,7 +25,7 @@ public class Main {
             } else if (car1.getFrontPos() + 1 >= road.getLength()) {
                 performRoadExit(car1, road);
             }
-            System.out.println(Arrays.toString(road.getHasVehicles()));
+            System.out.println("Tick: "+count+ " " +Arrays.toString(road.getHasVehicles()));
 
             if (count == 50) {
                 count = -1;
@@ -34,11 +34,13 @@ public class Main {
     }
 
     private static void performRoadExit(Car car1, Straight road) {
-        if (car1.getBackPos() <= road.getLength()) {
+        if (car1.getBackPos() < road.getLength()) {
             road.removeCar(car1.getFrontPos());
             road.removeCar(car1.getBackPos());
             car1.drive();
             road.addCar(car1.getBackPos(), car1.getBackPos());
+        } if (car1.getBackPos() >= road.getLength()){
+            car1.resetCar();
         }
     }
 
