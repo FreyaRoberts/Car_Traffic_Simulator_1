@@ -16,7 +16,7 @@ class CarTest {
     void testDrive() {
         Car car = new Car();
         assertEquals(-1, car.frontPos);
-        assertEquals(-1, car.backPos);
+        assertEquals(-2, car.backPos);
         car.drive();
         assertEquals(0, car.frontPos);
         assertEquals(-1, car.backPos);

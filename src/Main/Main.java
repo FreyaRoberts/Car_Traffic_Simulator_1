@@ -1,6 +1,7 @@
 package Main;
 
 import Functionality.TrafficLight;
+import Roads.Intersection;
 import Roads.Straight;
 import Vehicles.Car;
 
@@ -10,8 +11,7 @@ public class Main {
     public static void main(String[] args) {
         boolean runMain = true;
         Car car1 = new Car();
-        Car car2 = new Car();
-        Straight road = new Straight("South", 25);
+        Straight road = new Straight((Intersection) null, 25);
         road.addTrafficLight(6);
         TrafficLight light = road.getTrafficLights()[6];
         int count;
@@ -21,9 +21,6 @@ public class Main {
             }
             if (canMoveForward(car1, road)) {
                 performCarMovement(car1, road);
-            }
-            if (canMoveForward(car2, road)) {
-                performCarMovement(car2, road);
             }
             System.out.println(Arrays.toString(road.getHasVehicles()));
 
