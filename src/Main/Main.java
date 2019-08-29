@@ -21,7 +21,8 @@ public class Main {
             }
             if (canMoveForward(car1, road)) {
                 performCarMovement(car1, road);
-            } else {
+
+            } else if (car1.getFrontPos() + 1 >= road.getLength()) {
                 performRoadExit(car1, road);
             }
             System.out.println(Arrays.toString(road.getHasVehicles()));
@@ -33,7 +34,6 @@ public class Main {
     }
 
     private static void performRoadExit(Car car1, Straight road) {
-
         if (car1.getBackPos() <= road.getLength()) {
             road.removeCar(car1.getFrontPos());
             road.removeCar(car1.getBackPos());
