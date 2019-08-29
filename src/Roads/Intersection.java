@@ -35,7 +35,7 @@ public class Intersection {
         return connectsToIntersection;
     }
 
-    public Straight getOriginatesFromStraight() {
+    public Straight getConnectsToStraight() {
         return connectsToStraight;
     }
 
