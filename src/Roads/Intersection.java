@@ -31,7 +31,7 @@ public class Intersection {
         this.connectsToIntersection = road;
     }
 
-    public Intersection getOriginatesFromIntersection() {
+    public Intersection getConnectsToIntersection() {
         return connectsToIntersection;
     }
 
@@ -39,7 +39,7 @@ public class Intersection {
         return connectsToStraight;
     }
 
-    public TIntersection getOriginatesFromTIntersection() {
+    public TIntersection getConnectsToTIntersection() {
         return connectsToTIntersection;
     }
 }

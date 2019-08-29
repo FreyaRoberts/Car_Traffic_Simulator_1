@@ -2,8 +2,6 @@ package Roads;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Timer;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class TIntersectionTest {
@@ -13,8 +11,8 @@ class TIntersectionTest {
         TIntersection road = new TIntersection(nullRoad, "Left");
         assertFalse(road.hasEastExit);
         assertTrue(road.hasWestExit);
-        assertNull(nullRoad.getOriginatesFromIntersection());
-        assertEquals(nullRoad, road.getOriginatesFromIntersection());
+        assertNull(nullRoad.getConnectsToIntersection());
+        assertEquals(nullRoad, road.getConnectsToIntersection());
     }
 
 }
