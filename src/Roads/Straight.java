@@ -10,11 +10,33 @@ public class Straight extends Intersection {
     private boolean[] hasTrafficLights;
     private TrafficLight[] trafficLights;
 
-    public Straight(String originatesFrom, int length) {
+    public Straight(Intersection originatesFrom, int length) {
         super(originatesFrom);
-        super.setExits(originatesFrom);
+        setExits();
         setOriginatesFrom(originatesFrom);
-        setExits(originatesFrom);
+        setExits();
+        setLength(length);
+        setHasVehicles(this.length);
+        setHasTrafficLights(this.length);
+        setTrafficLights(this.length);
+    }
+
+    public Straight(Straight originatesFrom, int length) {
+        super(originatesFrom);
+        setExits();
+        setOriginatesFrom(originatesFrom);
+        setExits();
+        setLength(length);
+        setHasVehicles(this.length);
+        setHasTrafficLights(this.length);
+        setTrafficLights(this.length);
+    }
+
+    public Straight(TIntersection originatesFrom, int length) {
+        super(originatesFrom);
+        setExits();
+        setOriginatesFrom(originatesFrom);
+        setExits();
         setLength(length);
         setHasVehicles(this.length);
         setHasTrafficLights(this.length);
@@ -47,10 +69,6 @@ public class Straight extends Intersection {
     private void setHasVehicles(int length) {
         this.hasVehicles = new boolean[length];
     }
-
-//    public boolean hasVehicle(int pos) {
-//        return hasVehicles[pos];
-//    }
 
     public void addCar(int frontPos, int backPos) {
         int bodyPos;
@@ -96,20 +114,8 @@ public class Straight extends Intersection {
         trafficLights[pos] = null;
     }
 
-    public void setExits(String originatesFrom) {
-        switch (originatesFrom) {
-            case "North":
-                this.hasEastExit = false;
-                this.hasWestExit = false;
-            case "South":
-                this.hasEastExit = false;
-                this.hasWestExit = false;
-            case "East":
-                this.hasSouthExit = false;
-                this.hasNorthExit = false;
-            case "West":
-                this.hasNorthExit = false;
-                this.hasSouthExit = false;
-        }
+    private void setExits() {
+        this.hasWestExit = false;
+        this.hasEastExit = false;
     }
 }

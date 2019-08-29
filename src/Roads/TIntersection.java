@@ -5,13 +5,23 @@ public class TIntersection extends Intersection {
     String orientation;
     // Indicator of if the road is left-sided or right-sided
 
-    TIntersection(String originatesFrom, String orientation) {
+    TIntersection(Intersection originatesFrom, String orientation) {
         super(originatesFrom);
-        super.setExits(originatesFrom);
         setOrientation(orientation);
         setExits(orientation);
     }
 
+    TIntersection(Straight originatesFrom, String orientation) {
+        super(originatesFrom);
+        setOrientation(orientation);
+        setExits(orientation);
+    }
+
+    TIntersection(TIntersection originatesFrom, String orientation) {
+        super(originatesFrom);
+        setOrientation(orientation);
+        setExits(orientation);
+    }
 
     public String getOrientation() {
         return orientation;

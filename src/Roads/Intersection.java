@@ -1,35 +1,45 @@
 package Roads;
 
 public class Intersection {
-    boolean hasNorthExit = true;
-    boolean hasSouthExit = true;
     boolean hasEastExit = true;
     boolean hasWestExit = true;
-    String originatesFrom;
+    Intersection connectsFromIntersection = null;
+    Straight connectsFromStraight = null;
+    TIntersection connectsFromTIntersection = null;
 
-    Intersection(String originatesFrom){
+    Intersection(Intersection originatesFrom) {
         setOriginatesFrom(originatesFrom);
-        setExits(originatesFrom);
     }
 
-    void setOriginatesFrom(String originatesFrom) {
-        this.originatesFrom = originatesFrom;
+    Intersection(Straight originatesFrom) {
+        setOriginatesFrom(originatesFrom);
     }
 
-    public String getOriginatesFrom() {
-        return originatesFrom;
+    Intersection(TIntersection originatesFrom) {
+        setOriginatesFrom(originatesFrom);
     }
 
-    public void setExits(String originatesFrom) {
-        switch (originatesFrom) {
-            case "North":
-                this.hasNorthExit = false;
-            case "South":
-                this.hasSouthExit = false;
-            case "East":
-                this.hasEastExit = false;
-            case "West":
-                this.hasWestExit = false;
-        }
+    void setOriginatesFrom(Intersection road ) {
+        this.connectsFromIntersection = road;
+    }
+
+    void setOriginatesFrom(Straight road ) {
+        this.connectsFromIntersection = road;
+    }
+
+    void setOriginatesFrom(TIntersection road ) {
+        this.connectsFromIntersection = road;
+    }
+
+    public Intersection getOriginatesFromIntersection() {
+        return connectsFromIntersection;
+    }
+
+    public Straight getOriginatesFromStraight(){
+        return connectsFromStraight;
+    }
+
+    public TIntersection getOriginatesFromTIntersection(){
+        return connectsFromTIntersection;
     }
 }
