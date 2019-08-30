@@ -27,14 +27,9 @@ public class Main {
             }
             if (canMoveForward(car1)) {
                 performCarMovement(car1);
+//                System.out.println("THERE");
             } else if (car1.getFrontPos() + 1 >= road1.getLength()) {
-                Straight currentRoad = car1.getCurrentRoad();
-                if (car1.getBackPos() == currentRoad.getLength()) {
-                    performRoadExit(car1);
-                    currentRoad.removeCar(currentRoad.getLength());
-                }
                 performRoadExit(car1);
-
             }
             System.out.println("Tick: " + count + " Road 1: " + Arrays.toString(road1.getHasVehicles()) + " Road 2: " + Arrays.toString(road2.getHasVehicles()));
 
@@ -52,12 +47,13 @@ public class Main {
             currentRoad.removeCar(car1.getBackPos());
             car1.drive();
             currentRoad.addCar(car1.getBackPos(), car1.getBackPos());
-            nextRoad.addCar(0,0);
-        } else if (car1.getBackPos() == currentRoad.getLength()){
-            car1.setCurrentRoad(nextRoad);
-            car1.resetCar();
-            nextRoad.addCar(car1.getFrontPos(), car1.getBackPos());
-            performCarMovement(car1);
+            nextRoad.addCar(0, 0);
+            if (car1.getBackPos() == currentRoad.getLength()) {
+                car1.setCurrentRoad(nextRoad);
+                car1.resetCar();
+                nextRoad.addCar(car1.getFrontPos(), car1.getBackPos());
+                performCarMovement(car1);
+            }
         }
     }
 
