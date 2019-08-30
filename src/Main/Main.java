@@ -35,7 +35,7 @@ public class Main {
             }
             System.out.println("Tick: " + count + " Road 1: " + Arrays.toString(road1.getHasVehicles()) + " Road 2: " + Arrays.toString(road2.getHasVehicles()));
 
-            if (count == 50) {
+            if (count == 41) {
                 count = -1;
             }
         }
