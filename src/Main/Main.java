@@ -10,9 +10,12 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         boolean runMain = true;
-        Straight road = new Straight((Intersection) null, 12, false);
+        Straight road2 = new Straight((Intersection) null, 12, false);
+        Straight road1 = new Straight(road2, 12, false);
+        Straight road = road1;
         Car car1 = new Car(road);
-        road.addTrafficLight(6);
+        road1.addTrafficLight(6);
+//        road2.addTrafficLight(6);
         TrafficLight light = road.getTrafficLights()[6];
         int count;
         for (count = 1; count > 0; count++) {
@@ -24,8 +27,13 @@ public class Main {
 
             } else if (car1.getFrontPos() + 1 >= road.getLength()) {
                 performRoadExit(car1, road);
+                if (car1.getBackPos() >= road.getLength()) {
+                    car1.resetCar();
+                    road = road2;
+                    car1.setCurrentRoad(road);
+                }
             }
-            System.out.println("Tick: "+count+ " " +Arrays.toString(road.getHasVehicles()));
+            System.out.println("Tick: " + count + " Road 1: " + Arrays.toString(road1.getHasVehicles()) + " Road 2: " + Arrays.toString(road2.getHasVehicles()));
 
             if (count == 50) {
                 count = -1;
@@ -39,8 +47,6 @@ public class Main {
             road.removeCar(car1.getBackPos());
             car1.drive();
             road.addCar(car1.getBackPos(), car1.getBackPos());
-        } if (car1.getBackPos() >= road.getLength()){
-            car1.resetCar();
         }
     }
 
