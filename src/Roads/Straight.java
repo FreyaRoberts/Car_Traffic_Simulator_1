@@ -5,20 +5,27 @@ import Vehicles.*;
 
 public class Straight extends Intersection {
 
-    private int length;
+    int length;
     private boolean[] hasVehicles;
     private boolean[] hasTrafficLights;
     private TrafficLight[] trafficLights;
+    private boolean isNullRoad;
 
-    public Straight(Intersection connectsTo, int length) {
+    public Straight(Intersection connectsTo, int length, boolean isNullRoad) {
         super(connectsTo);
         setExits();
         setConnectsTo(connectsTo);
         setExits();
-        setLength(length);
-        setHasVehicles(this.length);
-        setHasTrafficLights(this.length);
-        setTrafficLights(this.length);
+        if (isNullRoad) {
+            // isNullRoad allows for a bus to be created when deciding Straight.length without creating recursion error
+            //TODO improve this
+            this.length = length;
+        } else {
+            setLength(length);
+            setHasVehicles(this.length);
+            setHasTrafficLights(this.length);
+            setTrafficLights(this.length);
+        }
     }
 
     public Straight(Straight connectsTo, int length) {
@@ -48,14 +55,15 @@ public class Straight extends Intersection {
     }
 
     private void setLength(int length) {
-        Bus bus = new Bus();
+        Straight nullRoad = new Straight((Intersection) null, 25, true);
+        Bus bus = new Bus(nullRoad);
         int distance;
         //TODO Remove this and come up with better length detection
         //TODO Do this by sending in a bus from the MAIN class and also make min/max lengths a constant
-        if (length > 5 * bus.length) {
-            distance = 5 * (int) bus.length;
-        } else if (length < 2 * (int) bus.length) {
-            distance = (int) bus.length;
+        if (length > 5 * bus.getLength()) {
+            distance = 5 * (int) bus.getLength();
+        } else if (length < 2 * (int) bus.getLength()) {
+            distance = (int) bus.getLength();
         } else {
             distance = length;
         }

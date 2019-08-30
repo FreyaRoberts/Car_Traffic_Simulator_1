@@ -1,5 +1,7 @@
 package Vehicles;
 
+import Roads.Straight;
+
 public class Car {
     private final double CAR_LENGTH = 2;
     public double length = CAR_LENGTH;
@@ -7,12 +9,29 @@ public class Car {
     private int frontPos = -1;
     private int backPos = -2;
 
+    private Straight currentRoad = null;
+
+    public Car(Straight startingRoad) {
+        resetCar();
+        setLength(CAR_LENGTH);
+        setWidth(0.5 * length);
+        setCurrentRoad(startingRoad);
+    }
+
     public double getLength() {
         return length;
     }
 
-    private void setLength(double length) {
+    void setLength(double length) {
         this.length = length;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
     }
 
     public void drive() {
@@ -44,8 +63,16 @@ public class Car {
         // If pos is less than zero it is set to zero
     }
 
-    public void resetCar(){
+    public void resetCar() {
         frontPos = -1;
         backPos = -2;
+    }
+
+    public Straight getCurrentRoad() {
+        return currentRoad;
+    }
+
+    public void setCurrentRoad(Straight currentRoad) {
+        this.currentRoad = currentRoad;
     }
 }

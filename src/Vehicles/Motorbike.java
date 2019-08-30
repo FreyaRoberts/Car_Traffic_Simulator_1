@@ -1,8 +1,11 @@
 package Vehicles;
 
+import Roads.Straight;
+
 class Motorbike extends Car {
-    Motorbike() {
-        this.length = 0.5 * super.length;
+    Motorbike(Straight startingRoad) {
+        super(startingRoad);
+        setLength(0.5 * super.length);
     }
 
 }

@@ -11,11 +11,11 @@ class StraightTest {
     @Test
     void testLength() {
         Intersection nullRoad = new Intersection((Intersection) null);
-        Straight road = new Straight(nullRoad, 1);
+        Straight road = new Straight(nullRoad, 1, false);
         assertEquals(6, road.getLength());
-        road = new Straight(nullRoad, 100);
+        road = new Straight(nullRoad, 100, false);
         assertEquals(30, road.getLength());
-        road = new Straight(nullRoad, 15);
+        road = new Straight(nullRoad, 15, false);
         assertEquals(15, road.getLength());
 
     }
@@ -23,7 +23,7 @@ class StraightTest {
     @Test
     void testHasVehicles() {
         Intersection nullRoad = new Intersection((Intersection) null);
-        Straight road = new Straight(nullRoad, 10);
+        Straight road = new Straight(nullRoad, 10, false);
         System.out.println(Arrays.toString(road.getHasVehicles()));
         //Expected: 6 False's in an array
 
@@ -32,7 +32,7 @@ class StraightTest {
     @Test
     void testHasTrafficLights() {
         Intersection nullRoad = new Intersection((Intersection) null);
-        Straight road = new Straight(nullRoad, 10);
+        Straight road = new Straight(nullRoad, 10, false);
         System.out.println(Arrays.toString(road.getHasTrafficLights()));
         //Expected: 6 False's in an array
 
@@ -41,7 +41,7 @@ class StraightTest {
     @Test
     void testAddTrafficLight() {
         Intersection nullRoad = new Intersection((Intersection) null);
-        Straight road = new Straight(nullRoad, 10);
+        Straight road = new Straight(nullRoad, 10, false);
         road.addTrafficLight(2);
         road.addTrafficLight(4);
         assertFalse(road.getHasTrafficLights()[0]);
@@ -55,7 +55,7 @@ class StraightTest {
     @Test
     void testAddCar() {
         Intersection nullRoad = new Intersection((Intersection) null);
-        Straight road = new Straight(nullRoad, 10);
+        Straight road = new Straight(nullRoad, 10, false);
         road.addCar(5, 2);
         assertFalse(road.getHasVehicles()[0]);
         assertFalse(road.getHasVehicles()[1]);
@@ -64,8 +64,8 @@ class StraightTest {
         assertTrue(road.getHasVehicles()[4]);
         assertTrue(road.getHasVehicles()[5]);
 
-        road = new Straight(nullRoad, 10);
-        Car car = new Car();
+        road = new Straight(nullRoad, 10, false);
+        Car car = new Car(road);
         car.drive();
         road.addCar(car.getFrontPos(), car.getBackPos());
         assertTrue(road.getHasVehicles()[0]);
@@ -79,7 +79,7 @@ class StraightTest {
     @Test
     void testRemoveCar() {
         Intersection nullRoad = new Intersection((Intersection) null);
-        Straight road = new Straight(nullRoad, 10);
+        Straight road = new Straight(nullRoad, 10, false);
         road.addCar(5, 2);
         road.removeCar(5);
         assertFalse(road.getHasVehicles()[0]);
@@ -93,7 +93,7 @@ class StraightTest {
     @Test
     void testHasVehicle() {
         Intersection nullRoad = new Intersection((Intersection) null);
-        Straight road = new Straight(nullRoad, 10);
+        Straight road = new Straight(nullRoad, 10, false);
         road.addCar(5, 2);
         assertFalse(road.getHasVehicles()[0]);
         assertFalse(road.getHasVehicles()[1]);

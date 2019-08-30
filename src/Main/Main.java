@@ -10,8 +10,8 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         boolean runMain = true;
-        Car car1 = new Car();
-        Straight road = new Straight((Intersection) null, 12);
+        Straight road = new Straight((Intersection) null, 12, false);
+        Car car1 = new Car(road);
         road.addTrafficLight(6);
         TrafficLight light = road.getTrafficLights()[6];
         int count;
