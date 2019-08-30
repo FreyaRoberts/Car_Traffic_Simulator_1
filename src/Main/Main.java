@@ -10,13 +10,13 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         boolean runMain = true;
-        Straight road2 = new Straight((Intersection) null, 12, false);
+        Straight road3 = new Straight((Intersection) null, 12, false);
+        Straight road2 = new Straight(road3, 12, false);
         Straight road1 = new Straight(road2, 12, false);
-        Straight road = road1;
-        Car car1 = new Car(road);
+        Car car1 = new Car(road1);
         road1.addTrafficLight(11);
         road2.addTrafficLight(11);
-        TrafficLight light = road.getTrafficLights()[11];
+        TrafficLight light = road1.getTrafficLights()[11];
         TrafficLight light2 = road2.getTrafficLights()[11];
         light2.setIsGreen(true);
         int count;
@@ -25,36 +25,45 @@ public class Main {
                 light.setIsGreen(!light.getIsGreen());
                 light2.setIsGreen(!light2.getIsGreen());
             }
-            if (canMoveForward(car1, road)) {
-                performCarMovement(car1, road);
-
-            } else if (car1.getFrontPos() + 1 >= road.getLength()) {
-                performRoadExit(car1, road);
-                if (car1.getBackPos() >= road.getLength()) {
-                    car1.resetCar();
-                    road = road2;
-                    car1.setCurrentRoad(road);
+            if (canMoveForward(car1)) {
+                performCarMovement(car1);
+            } else if (car1.getFrontPos() + 1 >= road1.getLength()) {
+                Straight currentRoad = car1.getCurrentRoad();
+                if (car1.getBackPos() == currentRoad.getLength()) {
+                    performRoadExit(car1);
+                    currentRoad.removeCar(currentRoad.getLength());
                 }
+                performRoadExit(car1);
+
             }
             System.out.println("Tick: " + count + " Road 1: " + Arrays.toString(road1.getHasVehicles()) + " Road 2: " + Arrays.toString(road2.getHasVehicles()));
 
-            if (count == 61) {
+            if (count == 40) {
                 count = -1;
             }
         }
     }
 
-    private static void performRoadExit(Car car1, Straight road) {
-        if (car1.getBackPos() < road.getLength()) {
-            road.removeCar(car1.getFrontPos());
-            road.removeCar(car1.getBackPos());
+    private static void performRoadExit(Car car1) {
+        Straight currentRoad = car1.getCurrentRoad();
+        Straight nextRoad = currentRoad.getConnectsToStraight();
+        if (car1.getBackPos() < currentRoad.getLength()) {
+            currentRoad.removeCar(car1.getFrontPos());
+            currentRoad.removeCar(car1.getBackPos());
             car1.drive();
-            road.addCar(car1.getBackPos(), car1.getBackPos());
+            currentRoad.addCar(car1.getBackPos(), car1.getBackPos());
+            nextRoad.addCar(0,0);
+        } else if (car1.getBackPos() == currentRoad.getLength()){
+            car1.setCurrentRoad(nextRoad);
+            car1.resetCar();
+            nextRoad.addCar(car1.getFrontPos(), car1.getBackPos());
+            performCarMovement(car1);
         }
     }
 
 
-    private static void performCarMovement(Car car, Straight road) {
+    private static void performCarMovement(Car car) {
+        Straight road = car.getCurrentRoad();
         road.removeCar(car.getBackPos());
         moveCarForward(car, road);
     }
@@ -64,7 +73,8 @@ public class Main {
         road.addCar(car.getFrontPos(), car.getBackPos());
     }
 
-    private static boolean canMoveForward(Car car, Straight road) {
+    private static boolean canMoveForward(Car car) {
+        Straight road = car.getCurrentRoad();
         int futurePos = car.getFrontPos() + 1;
         if (futurePos < road.getLength()) {
             if (handleTrafficLight(futurePos, road)) {

@@ -28,26 +28,38 @@ public class Straight extends Intersection {
         }
     }
 
-    public Straight(Straight connectsTo, int length) {
+    public Straight(Straight connectsTo, int length, boolean isNullRoad) {
         super(connectsTo);
         setExits();
         setConnectsTo(connectsTo);
         setExits();
-        setLength(length);
-        setHasVehicles(this.length);
-        setHasTrafficLights(this.length);
-        setTrafficLights(this.length);
+        if (isNullRoad) {
+            // isNullRoad allows for a bus to be created when deciding Straight.length without creating recursion error
+            //TODO improve this
+            this.length = length;
+        } else {
+            setLength(length);
+            setHasVehicles(this.length);
+            setHasTrafficLights(this.length);
+            setTrafficLights(this.length);
+        }
     }
 
-    public Straight(TIntersection connectsTo, int length) {
-        super(connectsTo);
-        setExits();
-        setConnectsTo(connectsTo);
-        setExits();
-        setLength(length);
-        setHasVehicles(this.length);
-        setHasTrafficLights(this.length);
-        setTrafficLights(this.length);
+    public Straight(TIntersection connectsTo, int length, boolean isNullRoad) {
+            super(connectsTo);
+            setExits();
+            setConnectsTo(connectsTo);
+            setExits();
+            if (isNullRoad) {
+                // isNullRoad allows for a bus to be created when deciding Straight.length without creating recursion error
+                //TODO improve this
+                this.length = length;
+            } else {
+                setLength(length);
+                setHasVehicles(this.length);
+                setHasTrafficLights(this.length);
+                setTrafficLights(this.length);
+            }
     }
 
     public int getLength() {
