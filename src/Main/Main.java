@@ -53,6 +53,7 @@ public class Main {
                 car1.resetCar();
                 nextRoad.addCar(car1.getFrontPos(), car1.getBackPos());
                 performCarMovement(car1);
+                performCarMovement(car1);
             }
         }
     }
