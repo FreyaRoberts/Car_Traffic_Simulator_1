@@ -15,12 +15,15 @@ public class Main {
         Straight road = road1;
         Car car1 = new Car(road);
         road1.addTrafficLight(6);
-//        road2.addTrafficLight(6);
+        road2.addTrafficLight(6);
         TrafficLight light = road.getTrafficLights()[6];
+        TrafficLight light2 = road2.getTrafficLights()[6];
+        light2.setIsGreen(true);
         int count;
         for (count = 1; count > 0; count++) {
             if (count % light.LIGHT_TIME == 0) {
                 light.setIsGreen(!light.getIsGreen());
+                light2.setIsGreen(!light2.getIsGreen());
             }
             if (canMoveForward(car1, road)) {
                 performCarMovement(car1, road);
@@ -35,7 +38,7 @@ public class Main {
             }
             System.out.println("Tick: " + count + " Road 1: " + Arrays.toString(road1.getHasVehicles()) + " Road 2: " + Arrays.toString(road2.getHasVehicles()));
 
-            if (count == 41) {
+            if (count == 61) {
                 count = -1;
             }
         }
