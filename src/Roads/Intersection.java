@@ -1,8 +1,8 @@
 package Roads;
 
 public class Intersection {
-    boolean hasEastExit = true;
-    boolean hasWestExit = true;
+    public boolean hasEastExit = true;
+    public boolean hasWestExit = true;
     private Intersection connectsToIntersection = null;
     private Straight connectsToStraight = null;
     private TIntersection connectsToTIntersection = null;
@@ -19,15 +19,15 @@ public class Intersection {
         setConnectsTo(connectsTo);
     }
 
-    void setConnectsTo(Intersection road) {
+    public void setConnectsTo(Intersection road) {
         this.connectsToIntersection = road;
     }
 
-    void setConnectsTo(Straight road) {
+    public void setConnectsTo(Straight road) {
         this.connectsToStraight = road;
     }
 
-    void setConnectsTo(TIntersection road) {
+    public void setConnectsTo(TIntersection road) {
         this.connectsToTIntersection = road;
     }
 
