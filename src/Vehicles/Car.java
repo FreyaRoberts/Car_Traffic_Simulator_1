@@ -4,10 +4,10 @@ import Roads.Straight;
 
 public class Car {
     private final double CAR_LENGTH = 2;
-    public double length = CAR_LENGTH;
-    double width = 0.5 * length;
-    private int frontPos = -1;
-    private int backPos = -2;
+    private double length = CAR_LENGTH;
+    private double width = 0.5 * length;
+    private int frontPos;
+    private int backPos;
 
     private Straight currentRoad = null;
 
@@ -30,7 +30,7 @@ public class Car {
         return width;
     }
 
-    public void setWidth(double width) {
+    private void setWidth(double width) {
         this.width = width;
     }
 

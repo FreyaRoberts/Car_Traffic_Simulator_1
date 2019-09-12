@@ -11,8 +11,8 @@ class MotorbikeTest {
     void testDefault() {
         Straight road = new Straight((Intersection)null, 25, false);
         Motorbike motorbike = new Motorbike(road);
-        assertEquals(1, motorbike.length);
-        assertEquals(1, motorbike.width);
+        assertEquals(1, motorbike.getLength());
+        assertEquals(1, motorbike.getWidth());
     }
 
 

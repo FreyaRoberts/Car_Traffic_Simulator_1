@@ -9,7 +9,6 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        boolean runMain = true;
         Straight road3 = new Straight((Intersection) null, 12, false);
         Straight road2 = new Straight(road3, 12, false);
         Straight road1 = new Straight(road2, 12, false);
@@ -27,16 +26,39 @@ public class Main {
             }
             if (canMoveForward(car1)) {
                 performCarMovement(car1);
-//                System.out.println("THERE");
             } else if (car1.getFrontPos() + 1 >= road1.getLength()) {
                 performRoadExit(car1);
             }
-            System.out.println("Tick: " + count + " Road 1: " + Arrays.toString(road1.getHasVehicles()) + " Road 2: " + Arrays.toString(road2.getHasVehicles()));
+            performOutPutForDraft(count, road1, road2);
 
             if (count == 40) {
                 count = -1;
             }
         }
+    }
+
+    private static void performOutPutForDraft(int count, Straight road1, Straight road2) {
+        String[] road1Print = new String[road1.getLength()];
+        String[] road2Print = new String[road2.getLength()];
+        for (int pos = 0; pos<road1.getLength(); pos++) {
+            if (road1.getHasVehicles()[pos]){
+                road1Print[pos] = "Car";
+            } else if (road1.getHasTrafficLights()[pos]){
+                road1Print[pos] = "Light";
+            } else {
+                road1Print[pos] = "Road";
+            }
+        }
+        for (int pos = 0; pos<road2.getLength(); pos++) {
+            if (road2.getHasVehicles()[pos]) {
+                road2Print[pos] = "Car";
+            } else if (road2.getHasTrafficLights()[pos]) {
+                road2Print[pos] = "Light";
+            } else {
+                road2Print[pos] = "Road";
+            }
+        }
+        System.out.println("Tick: " + count + " Road 1: " + Arrays.toString(road1Print) + " Road 2: " + Arrays.toString(road2Print));
     }
 
     private static void performRoadExit(Car car1) {

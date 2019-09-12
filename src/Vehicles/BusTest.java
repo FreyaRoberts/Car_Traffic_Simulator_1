@@ -11,8 +11,8 @@ class BusTest {
     void testDefaults(){
         Straight road = new Straight((Intersection)null, 25, false);
         Bus bus = new Bus(road);
-        assertEquals(6, bus.length);
-        assertEquals(1, bus.width);
+        assertEquals(6, bus.getLength());
+        assertEquals(1, bus.getWidth());
     }
 
 }

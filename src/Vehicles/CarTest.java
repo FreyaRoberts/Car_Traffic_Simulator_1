@@ -11,8 +11,8 @@ class CarTest {
     void testDefault() {
         Straight road = new Straight((Intersection) null, 25, false);
         Car car = new Car(road);
-        assertEquals(2, car.length);
-        assertEquals(1, car.width);
+        assertEquals(2, car.getLength());
+        assertEquals(1, car.getWidth());
         assertEquals(road, car.getCurrentRoad());
     }
 

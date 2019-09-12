@@ -5,11 +5,11 @@ import Vehicles.*;
 
 public class Straight extends Intersection {
 
-    int length;
+    private int length;
     private boolean[] hasVehicles;
     private boolean[] hasTrafficLights;
     private TrafficLight[] trafficLights;
-    private boolean isNullRoad;
+
 
     public Straight(Intersection connectsTo, int length, boolean isNullRoad) {
         super(connectsTo);
