@@ -123,10 +123,9 @@ public class Straight extends Intersection {
         this.trafficLights = new TrafficLight[length];
     }
 
-    public void addTrafficLight(int pos) {
+    public void addTrafficLight(int pos, TrafficLight light) {
         hasTrafficLights[pos] = true;
-        TrafficLight trafficLight = new TrafficLight(pos);
-        trafficLights[pos] = trafficLight;
+        trafficLights[pos] = light;
     }
 
     public void removeTrafficLight(int pos) {

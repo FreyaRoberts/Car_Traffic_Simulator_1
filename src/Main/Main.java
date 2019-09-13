@@ -13,10 +13,10 @@ public class Main {
         Straight road2 = new Straight(road3, 12, false);
         Straight road1 = new Straight(road2, 12, false);
         Car car1 = new Car(road1);
-        road1.addTrafficLight(11);
-        road2.addTrafficLight(11);
-        TrafficLight light = road1.getTrafficLights()[11];
-        TrafficLight light2 = road2.getTrafficLights()[11];
+        TrafficLight light = new TrafficLight(road1.getLength() - 1);
+        TrafficLight light2 = new TrafficLight(road2.getLength() -1);
+        road1.addTrafficLight(light.getPos(), light);
+        road2.addTrafficLight(light2.getPos(), light2);
         light2.setIsGreen(true);
         int count;
         for (count = 1; count > 0; count++) {

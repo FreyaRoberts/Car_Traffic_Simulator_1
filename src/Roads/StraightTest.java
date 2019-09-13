@@ -1,5 +1,6 @@
 package Roads;
 
+import Functionality.TrafficLight;
 import Vehicles.Car;
 import org.junit.jupiter.api.Test;
 
@@ -42,8 +43,10 @@ class StraightTest {
     void testAddTrafficLight() {
         Intersection nullRoad = new Intersection((Intersection) null);
         Straight road = new Straight(nullRoad, 10, false);
-        road.addTrafficLight(2);
-        road.addTrafficLight(4);
+        TrafficLight light = new TrafficLight(2);
+        TrafficLight light2 = new TrafficLight(4);
+        road.addTrafficLight(light.getPos(), light);
+        road.addTrafficLight(light2.getPos(), light2);
         assertFalse(road.getHasTrafficLights()[0]);
         assertFalse(road.getHasTrafficLights()[1]);
         assertTrue(road.getHasTrafficLights()[2]);
