@@ -21,8 +21,8 @@ public class TrafficLight {
         return isGreen;
     }
 
-    public void setIsGreen(boolean green) {
-        isGreen = green;
+    public void setIsGreen(boolean isGreen) {
+        this.isGreen = isGreen;
     }
 }
 
